@@ -45,3 +45,9 @@ end
 # Use debugger
 # gem 'debugger', group: [:development, :test]
 
+# Use OmniAuth
+gem 'omniauth'
+gem 'omniauth-twitter'
+
+# Use figaro
+gem 'figaro'
