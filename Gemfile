@@ -51,3 +51,7 @@ gem 'omniauth-twitter'
 
 # Use figaro
 gem 'figaro'
+
+# Use Twitter-Bootstrap
+gem 'less-rails'
+gem 'twitter-bootstrap-rails'
