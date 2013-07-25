@@ -16,4 +16,5 @@ class User < ActiveRecord::Base
     params.require(:user).permit(:provider,:uid)
   end
 
+  has_many :bot
 end
