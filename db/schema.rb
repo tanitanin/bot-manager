@@ -15,10 +15,12 @@ ActiveRecord::Schema.define(version: 20130725102159) do
 
   create_table "bots", force: true do |t|
     t.integer  "user_id"
-    t.string   "name"
     t.string   "uid"
     t.string   "provider"
-    t.text     "info"
+    t.string   "name"
+    t.string   "nickname"
+    t.string   "token"
+    t.string   "secret"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

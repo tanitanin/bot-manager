@@ -1,16 +1,22 @@
 class Daemon < ActiveRecord::Base
 
-  def self.start(command)
-    daemon = Daemon.new
-    daemon.command = command
-    begin
-      daemon.pid = Process.spawn(command)
-    rescue
-      throw Error
-    else
+  def self.start(bot_id,command,*args)
+
+    tmp = fork do
+      daemon = Daemon.new
+      daemon.bot_id = bot_id
+      daemon.command = command
+      daemon.pid = Process.pid
       daemon.save
+
+      if command == :userstream then
+        bot = Bot.find(bot_id)
+        bot.userstream
+      end
+
+      Daemon.delete_all(pid: Process.pid)
     end
-    daemon
+    Process.detach(tmp)
   end
 
   def self.stop(id)
@@ -18,6 +24,6 @@ class Daemon < ActiveRecord::Base
     Process.kill('KILL',daemon.pid)
     Daemon.delete(id)
   end
-  
+
   belongs_to :bot
-end
+nd
