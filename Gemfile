@@ -53,4 +53,9 @@ gem 'omniauth-twitter'
 gem 'figaro'
 
 # Use twitter
+gem 'oauth'
 gem 'twitter'
+
+# Use Twitter-Bootstrap
+gem 'less-rails'
+gem 'twitter-bootstrap-rails'
