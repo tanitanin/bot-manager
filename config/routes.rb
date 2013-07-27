@@ -2,6 +2,10 @@ BotManager::Application.routes.draw do
   get "/auth/:provider/callback" => "sessions#create"
   get "/logout" => "sessions#destroy"
 
+
+  get "/auth/bot" => "bot#twitter_bot_oauth"
+  get "/bot/auth/callback" => "bot#twitter_bot_oauth_callback"
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

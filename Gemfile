@@ -51,3 +51,6 @@ gem 'omniauth-twitter'
 
 # Use figaro
 gem 'figaro'
+
+# Use twitter
+gem 'twitter'

@@ -5,3 +5,11 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+
+consumer = BotConsumer.create(
+  id: 0,
+  provider: :twitter,
+  name: "bot-manager",
+  key: ENV["TWITTER_CONSUMER_KEY"],
+  secret: ENV["TWITTER_CONSUMER_SECRET"]
+)

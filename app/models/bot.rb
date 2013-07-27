@@ -1,4 +1,7 @@
 class Bot < ActiveRecord::Base
+  belongs_to :user
+  has_many :bot_auth_token
+  has_many :daemon
 
   def self.create_with_auth(auth)
     bot = Bot.new
@@ -9,12 +12,11 @@ class Bot < ActiveRecord::Base
     bot.token = auth['credentials']['token']
     bot.secret = auth['credentials']['secret']
     bot.save
+    return bot
   end
 
   def userstream
     puts "userstream..."
   end
 
-  belongs_to :user
-  has_many :daemon
 end
