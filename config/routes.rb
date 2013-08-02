@@ -6,6 +6,9 @@ BotManager::Application.routes.draw do
   get "/auth/bot" => "bot#twitter_bot_oauth"
   get "/bot/auth/callback" => "bot#twitter_bot_oauth_callback"
 
+  get "/bot/:bot/:command/start" => "daemon#start"
+  get "/bot/:bot/:command/stop" => "daemon#stop"
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

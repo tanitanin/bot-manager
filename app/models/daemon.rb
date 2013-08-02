@@ -24,9 +24,13 @@ class Daemon < ActiveRecord::Base
     Process.detach(tmp)
   end
 
-  def self.stop(id)
-    daemon = find(id)
-    daemon.kill if daemon
+  def self.stop(bot_id,command)
+    Daemon.where(
+      :bot_id => bot_id,
+      :command => command
+    ).find_each do |daemon|
+      daemon.kill
+    end
   end
 
   def kill
