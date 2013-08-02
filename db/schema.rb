@@ -14,20 +14,21 @@
 ActiveRecord::Schema.define(version: 20130801140251) do
 
   create_table "bot_auth_tokens", force: true do |t|
-    t.integer  "bot_id"
-    t.integer  "bot_consumer_id"
-    t.string   "token"
-    t.string   "secret"
+    t.integer  "bot_id",          null: false
+    t.integer  "bot_consumer_id", null: false
+    t.string   "token",           null: false
+    t.string   "secret",          null: false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
   create_table "bot_consumers", force: true do |t|
-    t.integer  "user_id"
-    t.string   "provider"
-    t.string   "name"
-    t.string   "key"
-    t.string   "secret"
+    t.integer  "user_id",                    null: false
+    t.string   "provider",                   null: false
+    t.string   "name",                       null: false
+    t.string   "key",                        null: false
+    t.string   "secret",                     null: false
+    t.boolean  "is_default", default: false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -41,10 +42,10 @@ ActiveRecord::Schema.define(version: 20130801140251) do
   end
 
   create_table "bots", force: true do |t|
-    t.integer  "user_id"
+    t.integer  "user_id",           null: false
     t.integer  "bot_auth_token_id"
-    t.string   "uid"
-    t.string   "provider"
+    t.string   "uid",               null: false
+    t.string   "provider",          null: false
     t.string   "name"
     t.string   "nickname"
     t.datetime "created_at"
@@ -52,11 +53,11 @@ ActiveRecord::Schema.define(version: 20130801140251) do
   end
 
   create_table "daemons", force: true do |t|
-    t.integer  "bot_id"
+    t.integer  "bot_id",     null: false
     t.string   "command"
     t.string   "proc_name"
     t.text     "proc_args"
-    t.integer  "pid"
+    t.integer  "pid",        null: false
     t.datetime "created_at"
     t.datetime "updated_at"
   end

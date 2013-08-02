@@ -8,7 +8,23 @@ class User < ActiveRecord::Base
     )
     user.name = auth["info"]["nickname"]
     user.save
+    user.create_default_consumer
     user.id
+  end
+
+  def get_default_consumer_id
+    BotConsumer.where(user_id: id, is_default: true).first.id
+  end
+
+  def create_default_consumer
+    con = BotConsumer.new
+    con.user_id = id
+    con.provider = "twitter"
+    con.name = "Bot-Manager"
+    con.key = ENV["TWITTER_CONSUMER_KEY"]
+    con.secret = ENV["TWITTER_CONSUMER_SECRET"]
+    con.is_default = true
+    con.save
   end
 
   private

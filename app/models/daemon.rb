@@ -3,6 +3,10 @@ class Daemon < ActiveRecord::Base
 
   def self.start(bot_id,command,*args)
 
+    if ! Daemon.where(:command => command).empty? then
+      return nil
+    end
+
     tmp = fork do
       daemon = Daemon.new
       daemon.bot_id = bot_id
@@ -22,8 +26,14 @@ class Daemon < ActiveRecord::Base
 
   def self.stop(id)
     daemon = find(id)
-    Process.kill('KILL',daemon.pid)
-    Daemon.delete(id)
+    daemon.kill if daemon
+  end
+
+  def kill
+  rescue
+    Process.kill('KILL',pid)
+  ensure
+    delete
   end
 
 end
