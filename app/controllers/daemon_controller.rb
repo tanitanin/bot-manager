@@ -1,0 +1,2 @@
+class DaemonController < ApplicationController
+end
