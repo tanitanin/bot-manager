@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130726103522) do
+ActiveRecord::Schema.define(version: 20130801140251) do
 
   create_table "bot_auth_tokens", force: true do |t|
     t.integer  "bot_id"
@@ -32,6 +32,14 @@ ActiveRecord::Schema.define(version: 20130726103522) do
     t.datetime "updated_at"
   end
 
+  create_table "bot_streams", force: true do |t|
+    t.integer  "bot_id"
+    t.string   "type"
+    t.text     "stream"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "bots", force: true do |t|
     t.integer  "user_id"
     t.integer  "bot_auth_token_id"
@@ -39,8 +47,6 @@ ActiveRecord::Schema.define(version: 20130726103522) do
     t.string   "provider"
     t.string   "name"
     t.string   "nickname"
-    t.string   "token"
-    t.string   "secret"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

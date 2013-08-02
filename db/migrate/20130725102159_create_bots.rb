@@ -7,8 +7,6 @@ class CreateBots < ActiveRecord::Migration
       t.string :provider
       t.string :name
       t.string :nickname
-      t.string :token
-      t.string :secret
 
       t.timestamps
     end

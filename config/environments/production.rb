@@ -30,7 +30,8 @@ BotManager::Application.configure do
   config.assets.compile = false
 
   # Generate digests for assets URLs.
-  config.assets.digest = true
+  #config.assets.digest = true
+  config.assets.digest = false
 
   # Version of your assets, change this if you want to expire all your assets.
   config.assets.version = '1.0'
@@ -59,11 +60,11 @@ BotManager::Application.configure do
 
   # Precompile additional assets.
   # application.js, application.css, and all non-JS/CSS in app/assets folder are already added.
-  # config.assets.precompile += %w( search.js )
+  config.assets.precompile += %w( search.js )
 
   # Ignore bad email addresses and do not raise email delivery errors.
   # Set this to true and configure the email server for immediate delivery to raise delivery errors.
-  # config.action_mailer.raise_delivery_errors = false
+  config.action_mailer.raise_delivery_errors = false
 
   # Enable locale fallbacks for I18n (makes lookups for any locale fall back to
   # the I18n.default_locale when a translation can not be found).
@@ -73,7 +74,7 @@ BotManager::Application.configure do
   config.active_support.deprecation = :notify
 
   # Disable automatic flushing of the log to improve performance.
-  # config.autoflush_log = false
+  config.autoflush_log = false
 
   # Use default logging formatter so that PID and timestamp are not suppressed.
   config.log_formatter = ::Logger::Formatter.new

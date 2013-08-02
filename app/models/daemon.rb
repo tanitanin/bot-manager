@@ -1,4 +1,5 @@
 class Daemon < ActiveRecord::Base
+  belongs_to :bot
 
   def self.start(bot_id,command,*args)
 
@@ -25,5 +26,4 @@ class Daemon < ActiveRecord::Base
     Daemon.delete(id)
   end
 
-  belongs_to :bot
-nd
+end
