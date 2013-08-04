@@ -55,6 +55,7 @@ gem 'figaro'
 # Use twitter
 gem 'oauth'
 gem 'twitter'
+gem 'tweetstream'
 
 # Use Twitter-Bootstrap
 gem 'less-rails'
